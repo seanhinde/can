@@ -5,8 +5,8 @@
        {ref,"c5447d2d85a0d446d41a79bffe0a6a66bd50c901"}},
   0},
  {<<"uart">>,
-  {git,"https://github.com/tonyrog/uart.git",
-       {ref,"504b5c86161627c4adee31012f5968310cfef48d"}},
+  {git,"https://github.com/arjan/uart.git",
+       {ref,"9a27f5c7d1ab3ee223169daf7c3976ba50d8cfa9"}},
   0}]}.
 [
 {pkg_hash,[
