@@ -1,5 +1,4 @@
-can
-=====
+# can
 
 ### CAN binding for Erlang
 
@@ -8,13 +7,13 @@ for industrial applications.
 
 This implementation currently supports three different backends:
 
-* can_usb: CANUSB is a USB dongle from [LAWICEL AB](http://www.canusb.com).
-* can_udp: This is my own invention. A simple repackaging of CAN frames into UDP/IP datagrams sent over local multicast channel.
-* can_sock: A binding to linux SocketCAN interface.
+- can_usb: CANUSB is a USB dongle from [LAWICEL AB](http://www.canusb.com).
+- can_udp: This is my own invention. A simple repackaging of CAN frames into UDP/IP datagrams sent over local multicast channel.
+- can_sock: A binding to linux SocketCAN interface.
 
 Any number of backend interfaces may be started and attached to the
-can\_router, which is the main interface to receice and send CAN frames.<br/>
-An application will typically call can_router:attach() and then 
+can_router, which is the main interface to receice and send CAN frames.<br/>
+An application will typically call can_router:attach() and then
 receive CAN frames from any of the interfaces. To send a frame then
 simple call can:send/n, this will pass the CAN frame to all the
 interfaces and connected local applications in the Erlang node.
@@ -30,9 +29,9 @@ can be found [here](https://github.com/erlang/otp/wiki/Installation)
 can is built using rebar that can be found [here](https://github.com/rebar/rebar), with building instructions [here](https://github.com/rebar/rebar/wiki/Building-rebar). rebar's dynamic configuration mechanism, described [here](https://github.com/rebar/rebar/wiki/Dynamic-configuration), is used so the environment variable `REBAR_DEPS` should be set to the directory where your erlang applications are located.
 
 can also requires the following applications to be installed:
+
 <ul>
-<li>uart - https://github.com/tonyrog/uart</li>
-<li>lager - https://github.com/basho/lager</li>
+<li>uart - https://github.com/arjan/uart</li>
 </ul>
 
 ### Downloading
@@ -42,6 +41,7 @@ Clone the repository in a suitable location:
 ```sh
 $ git clone git://github.com/tonyrog/can.git
 ```
+
 ### Configurating
 
 Interfaces can be added and remove dynamically, but can also
@@ -50,7 +50,7 @@ be initialized in the environment like:
     {can, [{interfaces,
              [{can_udp, 1, []},
               {can_udp, 2, [{ttl,0}]},
-	      {can_usb, 1, [{device, "/dev/tty.usbserial-LWQ6UYOM"},
+          {can_usb, 1, [{device, "/dev/tty.usbserial-LWQ6UYOM"},
                             {bitrate, 125000}]},
               {can_usb, 2, [{device, "/dev/tty.usbserial-LWQ8CA1K"},
                             {bitrate, 250000}]},
@@ -67,12 +67,12 @@ the wakeup frame is sent.
 
     {can, [{wakeup, true},
            {wakeup_timeout, 15000},
-	   {interfaces,[
-	      {can_usb, 1, [{device, "/dev/tty.usbserial-LWQ8CA1K"},
+       {interfaces,[
+          {can_usb, 1, [{device, "/dev/tty.usbserial-LWQ8CA1K"},
                             {bitrate, 250000}]}
-	      {can_usb, 2, [{device, "/dev/tty.usbserial-LWQ6UYOM"},
+          {can_usb, 2, [{device, "/dev/tty.usbserial-LWQ6UYOM"},
                             {bitrate, 250000}]}
-	    ]}]}.
+        ]}]}.
 
 The wakeup frame looks like this ( maybe configure per interface ? ):
 
@@ -80,9 +80,8 @@ The wakeup frame looks like this ( maybe configure per interface ? ):
 
 And is sent to the PDO_TX1 for the current target node.
 
-	   
 The interfaces in the environment will get under supervision.
-		     
+
 #### Concepts
 
 ### Linux ( virtual ) can driver
@@ -90,11 +89,11 @@ The interfaces in the environment will get under supervision.
 #### load the virtual can driver
 
     $ sudo modprobe vcan
-	
+
 #### Create a virtual CAN network interface called 'vcan0'
 
     $ sudo ip link add dev vcan0 type vcan
-     
+
 #### Activate a virtual CAN network interface called 'vcan0'
 
     $ sudo ifconfig vcan0 up
@@ -112,14 +111,14 @@ The interfaces in the environment will get under supervision.
 #### Restart automatically on bus-off condition
 
     $ sudo ip link set dev can0 type can restart-ms 100
-	
+
 #### Setup CAN-FD
 
-    $ sudo ip link set can0 up type can bitrate 1000000 dbitrate 2000000 fd on 	
+    $ sudo ip link set can0 up type can bitrate 1000000 dbitrate 2000000 fd on
 
 #### Create a virtual CAN network interface (vcan1)
 
-	$ sudo ip link add type vcan
+    $ sudo ip link add type vcan
 
 ...
 
@@ -145,6 +144,7 @@ $ rebar compile
 $ erl -pa <path>/can/ebin
 >can_router:start().
 ```
+
 (Instead of specifing the path to the ebin directory you can set the environment ERL_LIBS.)
 
 Stop:
@@ -153,3 +153,4 @@ Stop:
 >halt().
 
 
+```

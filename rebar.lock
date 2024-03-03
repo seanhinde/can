@@ -1,0 +1,16 @@
+{"1.2.0",
+[{<<"hut">>,{pkg,<<"hut">>,<<"1.3.0">>},1},
+ {<<"netlink">>,
+  {git,"https://github.com/arjan/netlink.git",
+       {ref,"54a99f4a28f25b5b1432157f723e2ecc9e5885d3"}},
+  0},
+ {<<"uart">>,
+  {git,"https://github.com/arjan/uart.git",
+       {ref,"9a27f5c7d1ab3ee223169daf7c3976ba50d8cfa9"}},
+  0}]}.
+[
+{pkg_hash,[
+ {<<"hut">>, <<"71F2F054E657C03F959CF1ACC43F436EA87580696528CA2A55C8AFB1B06C85E7">>}]},
+{pkg_hash_ext,[
+ {<<"hut">>, <<"7E15D28555D8A1F2B5A3A931EC120AF0753E4853A4C66053DB354F35BF9AB563">>}]}
+].

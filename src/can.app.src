@@ -1,9 +1,7 @@
 {application, can,
  [{description, "CAN"},
   {vsn, git},
-  {modules, ["@@MODULES@@"]},
   {registered, [can_router]},
-  {mod,{can_app,[]}},
   {env, []},
   {optional_applications, [netlink]},
   {applications,[kernel,stdlib,uart]}
